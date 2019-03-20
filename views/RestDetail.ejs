@@ -1,1 +1,124 @@
-<h1>ajksdf</h1>
+<% include partials/header %>
+    <div class="container">
+            <div class="jumbotron jumbotron-fluid index-header-container">
+                    <div class="container" id="index-header">
+                      <h1 class="display-4">Welcome To <%= data["name"] %></h1>
+                      <p class="lead"></p>
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="card" style="width: 98%;">
+                            <div class="card-body">
+                                <span style="float: left;font-size: 1.5em;"><strong> Cuisines: </strong><%= data["cuisines"] %></span>
+                                <span style="float: right;font-size: 1.5em;"><span style="background-color: #<%= data['user_rating']['rating_color']%>"></strong><% if(data["user_rating"]["aggregate_rating"]=="0"){ %>
+                                 No Rating </span>
+                               <% }
+                               else{ %>
+                               <%= data["user_rating"]["aggregate_rating"] %>/5.0 </span><br>
+                               <%= data["user_rating"]["rating_text"] %>
+                               <% } %><br>Votes: <%= data["user_rating"]["votes"] %></span>
+                            </div>
+                    </div>
+            </div> <br><br>
+            <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body" style="text-align:justify;">
+                          <p class="card-text"> <strong>Average Cost For Two People:</strong> <%= data["currency"] %> <%= data["average_cost_for_two"] %></p><hr><br>
+                          <strong>Offers:</strong><% if(data["offers"] == ""){ %>
+                                No offers
+                          <% }
+                          else{ %>
+                            <%= data["offers"][0]["offer"]["offer_text"] %> <br><br>
+                           <strong> Type: </strong> <%= data["offers"][0]["offer"]["type"] %> <br><br>
+                           <strong> Start Date: </strong><%= data["offers"][0]["offer"]["start_date"] %> <br><br>
+                            <strong> End Date: </strong><%= data["offers"][0]["offer"]["end_date"] %> <br><br> 
+                            <strong> Disclaimer: </strong><%= data["offers"][0]["offer"]["disclaimer"] %> <br><br>
+                                <strong>Offer Type: </strong><%= data["offers"][0]["offer"]["offer_type"] %> <br><br>
+                                
+                         <% } %>
+                         <hr>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body" style="text-align:justify;">
+                          <p class="card-text">
+                              <strong>Home Delivery: </strong>
+                              <% if(data["has_online_delivery"] == "0"){ %>
+                                    No 
+                              <% }
+                              else{ %>
+                                Yes
+                             <% } %> <br><br> <hr>
+                              <strong>Delivery Now: </strong>
+                              <% if(data["is_deliverying_now"] == "0"){ %>
+                                No 
+                          <% }
+                          else{ %>
+                            Yes
+                         <% } %> <br><br> <hr>
+                              <strong>Table Reservation: </strong>
+                              <% if(data["is_table_reservation_supported"] == "0"){ %>
+                                No 
+                          <% }
+                          else{ %>
+                            Yes
+                         <% } %> <br><br> <hr>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+            </div> <br> <br>
+            <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="card">
+                          <div class="card-body" style="text-align:justify;"><br>
+                                <strong>Address</strong>
+                                <Address><%= data["location"]["address"] %></Address> <hr><br>
+                                <strong>City</strong><br>
+                                <%= data["location"]["city"] %> <hr><br><br> 
+                                <strong>Zipcode</strong><br>
+                                <% if(data["location"]["zipcode"] == ""){ %>
+                                    Not Available
+                                <% }
+                                else{ %>
+                                    <%= data["location"]["zipcode"] %>
+                              <%  } %> <hr>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                            <div class="card" style="text-align:center;"><br>
+                                <h4 class="card-title">Get Location</h4>
+                              <div class="card-body" style="text-align:justify;">
+                                    <div id="map" style="height: 350px;">
+                                    <!-- Map Goes Here -->
+                                    </div>
+                              </div>
+                            </div>
+                    </div>
+            </div>
+</div>
+
+<script>
+        function initMap() {
+            let location = {
+                lat:  <%= data["location"]["latitude"] %>,
+                lng:  <%= data["location"]["longitude"] %>
+            };
+            let map = new google.maps.Map(document.querySelector("#map"), {
+                zoom: 17,
+                center: location
+            });
+            let marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYe9PsCOQH2IP5x88wnemt2UuUrz0sHb4&callback=initMap" type="text/javascript">
+    </script>
+
+<% include partials/footer %>

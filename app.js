@@ -65,7 +65,7 @@ app.get("/show/:id/:r_id", function(req, res){
        
       function callback(error, response, body) {
         if(!error && response.statusCode == 200){
-            console.log(body);
+            //console.log(body);
             const parsedData = JSON.parse(body);
             res.render("RestDetail",{data: parsedData,id: req.params.id});
         }

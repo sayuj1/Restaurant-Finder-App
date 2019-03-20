@@ -1,0 +1,29 @@
+<% include partials/header %>
+    <div class="container">
+            <div class="jumbotron jumbotron-fluid index-header-container">
+                    <div class="container" id="index-header">
+                      <h1 class="display-4">Welcome To Hotel Search App</h1>
+                      <p class="lead">This is the best place to find hotels from home.</p>
+                    </div>
+            </div>
+    <div class="row text-center">
+    <% var i=0 
+        data["categories"].forEach(function(category){ %>
+            <div class="col-md-4 col-sm-6">
+                 <div class="card" style="width: 18rem;margin-top: 3%; margin-bottom: 3%;">
+                        <img src="<%=imgs[i]%>" class="card-img-top" alt="..." style="height: 200px;">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= category["categories"]["name"] %></h5>
+                        <a href="/show/<%= category['categories']['id'] %>" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+    <% i++; }) %>
+  </div>
+</div>
+<% include partials/header %>
+<!-- ========================================================================-->
+<%= // data["categories"][1]["categories"]["id"] %>
+<%= //data["categories"][1]["categories"]["name"] %>
+
+

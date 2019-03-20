@@ -19,9 +19,8 @@ app.get("/", function(req, res){
       };
        
       function callback(error, response, body) {
-        console.log("reach here");
         if(!error && response.statusCode == 200){
-            console.log(body);
+           // console.log(body);
             const parsedData = JSON.parse(body);
             res.render("index", {data: parsedData, imgs: imgs});  
         }
@@ -31,7 +30,48 @@ app.get("/", function(req, res){
 });
 
 app.get("/show/:id", function(req, res){
-    res.send("sdjf" + req.params.id);
+    var id = req.params.id;
+    var options = {
+        url: 'https://developers.zomato.com/api/v2.1/search?category='+id,
+        headers: {
+            'Accept': 'application/json',
+            'user-key': '1c023e9d1892813bf1ca4de62e57e647',
+            'Content-Type': 'application/json',
+        }
+      };
+       
+      function callback(error, response, body) {
+        if(!error && response.statusCode == 200){
+            //console.log(body);
+            const parsedData = JSON.parse(body);
+            res.render("show",{data: parsedData,id: req.params.id});
+        }
+      }
+      request(options, callback); 
+});
+
+app.get("/show/:id/:r_id", function(req, res){
+    //restaurant details goes here...
+    var id = req.params.id;
+    var r_id = req.params.r_id;
+    var options = {
+        url: 'https://developers.zomato.com/api/v2.1/restaurant?res_id='+r_id,
+        headers: {
+            'Accept': 'application/json',
+            'user-key': '1c023e9d1892813bf1ca4de62e57e647',
+            'Content-Type': 'application/json',
+        }
+      };
+       
+      function callback(error, response, body) {
+        if(!error && response.statusCode == 200){
+            console.log(body);
+            const parsedData = JSON.parse(body);
+            res.render("RestDetail",{data: parsedData,id: req.params.id});
+        }
+      }
+      request(options, callback); 
+
 });
 
 

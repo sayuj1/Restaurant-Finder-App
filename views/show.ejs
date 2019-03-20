@@ -1,31 +1,42 @@
 <% include partials/header %>
 
-<div class="container">
-    <h1 style="text-align: center;">Popular Restaurants</h1>
-    <h2>Total Results Found: <%= data['results_found'] %></h2><br>
-    <div class="row text-center">
-            <% data["restaurants"].forEach(function(restaurant){ %>      
-                   <div class="col-md-4 col-sm-6">
-                        <div class="card" style="width: 20rem;margin-top: 3%; margin-bottom: 3%;">
-                               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx7FsMjqjICCqManrFmlIp-zVpCSuF-9JNRQS8X6MUeuWSaw6Hbw" class="card-img-top" alt="..." style="height: 200px;">
-                           <div class="card-body" style="text-align: left;margin-left: 10%;"> 
-                               <h5 class="card-title"><%= restaurant["restaurant"]["name"] %>
-                                <% if(restaurant["restaurant"]["user_rating"]["aggregate_rating"] == "0"){%>
-                                    <span class="badge badge-secondary">New</span>
-                                <%} %>
-                                
-                            </h5>
-                               <p class="card-text">
-                                    <strong> Cuisines: </strong><%= restaurant["restaurant"]["cuisines"] %> <br>
-                                    <strong> Rating: </strong><%= restaurant["restaurant"]["user_rating"]["aggregate_rating"] %><br>
-                                    <strong> City: </strong><%= restaurant["restaurant"]["location"]["city"] %><br>
-                               </p>
-                               <a href="/show/<%= id %>/<%= restaurant['restaurant']['R']['res_id'] %>" class="btn btn-primary">More Details</a>
+<div class="container"><br>
+    <h1 style="text-align: center;">Popular Restaurants All Over The World!</h1>
+    <br>
+    <h3>Total Results Found: <%= data['results_found'] %></h3><br>
+    <% if( data['results_found'] == '0'){ %>
+        <div class="alert alert-info" role="alert">
+               Sorry!! :(  We were not able to find any restaurant in this category, Try another Category.
+        </div>
+    <% }
+    else{ %>
+        <div class="row text-center">
+                <% data["restaurants"].forEach(function(restaurant){ %>      
+                       <div class="col-md-4 col-sm-6">
+                            <div class="card" style="width: 20rem;margin-top: 3%; margin-bottom: 3%;">
+                                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx7FsMjqjICCqManrFmlIp-zVpCSuF-9JNRQS8X6MUeuWSaw6Hbw" class="card-img-top" alt="..." style="height: 200px;">
+                               <div class="card-body" style="text-align: left;margin-left: 10%;"> 
+                                   <h5 class="card-title"><%= restaurant["restaurant"]["name"] %>
+                                    <% if(restaurant["restaurant"]["user_rating"]["aggregate_rating"] == "0"){%>
+                                        <span class="badge badge-secondary">New</span>
+                                    <%} %>
+                                    
+                                </h5>
+                                   <p class="card-text">
+                                        <strong> Cuisines: </strong><%= restaurant["restaurant"]["cuisines"] %> <br>
+                                        <strong> Rating: </strong><%= restaurant["restaurant"]["user_rating"]["aggregate_rating"] %><br>
+                                        <strong> City: </strong><%= restaurant["restaurant"]["location"]["city"] %><br>
+                                   </p>
+                                   <a href="/show/<%= id %>/<%= restaurant['restaurant']['R']['res_id'] %>" class="btn btn-primary">More Details</a>
+                               </div>
                            </div>
                        </div>
-                   </div>
-            <% }) %>
-          </div>
+                <% }) %>
+              </div>
+    <% } %>
+
+    
+    
 </div>
 
 

@@ -6,6 +6,13 @@
                       <p class="lead"></p>
                     </div>
             </div>
+            <% if(data['featured_image'] != ""){%>
+            <div class="row">
+              <img src="" alt="">
+              <img src="<%= data['featured_image']%>" alt="your browser does not support for image :(" class="img-thumbnail" style="height: 500px; width: 100%;">
+            </div>
+            <br>
+          <% } %>
             <div class="row">
                     <div class="card" style="width: 98%;">
                             <div class="card-body">

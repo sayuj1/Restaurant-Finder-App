@@ -14,66 +14,7 @@
                Sorry!! :(  We were not able to find any restaurant in this category, Try another Category.
         </div>
     <% }else{ %>
-        <form action="/show/<%= id %>" method="POST">
-            <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-4">
-            <select class="custom-select custom-select-lg mb-3" name="cat_id">
-                <option selected>Select Category</option>
-                <option value="1">Delivery</option>
-                <option value="2">Dine-out</option>
-                <option value="3">Nightlife</option>
-                <option value="4">Catching-up</option>
-                <option value="5">Takeaway</option>
-                <option value="6">Cafes</option>
-                <option value="7">Daily Menus</option>
-                <option value="8">Breakfast</option>
-                <option value="9">Lunch</option>
-                <option value="10">Dinner</option>
-                <option value="11">Pubs & Bars</option>
-                <option value="13">Pocket Friendly Delivery</option>
-                <option value="14">Clubs & Lounges</option>
-              </select>
-            </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
-        <select class="custom-select custom-select-lg mb-3" name="c_id">
-            <option selected>Select Your City</option>
-            <option value="1" >Delhi NCR</option>
-            <option value="2" >Kolkata</option>
-            <option value="3" >Mumbai</option>
-            <option value="4" >Bengaluru</option>
-            <option value="5" >Pune</option>
-            <option value="6" >Hyderabad</option>
-            <option value="7" >Chennai</option>
-            <option value="8" >Lucknow</option>
-            <option value="9" >Kochi</option>
-            <option value="10" >Jaipur</option>
-            <option value="11" >Ahmedabad</option>
-            <option value="12" >Chandigarh</option>
-            <option value="13" >Goa</option>
-            <option value="14" >Indore</option>
-            <option value="15" >Gangtok</option>
-            <option value="16" >Nashik</option>
-            <option value="17" >Gulmarg</option>
-            <option value="18" >Ooty</option>
-            <option value="19" >Shimla</option>
-            <option value="20" >Ludhiana</option>
-            <option value="21" >Guwahati</option>
-            <option value="22" >Amritsar</option>
-            <option value="23" >Kanpur</option>
-            <option value="24" >Allahabad</option>
-            <option value="25" >Aurangabad</option>
-            <option value="26" >Bhopal</option>
-            <option value="27" >Ranchi</option>
-            <option value="28" >Visakhapatnam</option>
-            <option value="29" >Bhubaneswar</option>
-            <option value="30" >Coimbatore</option>
-          </select>
-        </div>
-        <div class="col-md-4 col-lg-4 col-sm-12">
-          <input type="submit" value="Submit" class="btn btn-primary btn-lg">
-        </div>
-        </div>
-        </form>
+        <% include partials/showOption %>
         <div class="row text-center">
                 <% data["restaurants"].forEach(function(restaurant){ %>      
                        <div class="col-md-4 col-sm-6">

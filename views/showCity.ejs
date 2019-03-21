@@ -1,16 +1,20 @@
 <% include partials/header %>
 
 <div class="container"><br>
-    <h1 style="text-align: center;">Popular Restaurants All Over The World!</h1>
-    <br>
+    <h1 style="text-align: center;">
+        <% if( data['results_found'] == '0'){ %>
+            No Restaurant Found!! 
+            <% }else{ %>
+                Popular Restaurants in <%= data["restaurants"][0]["restaurant"]["location"]["city"]%> 
+                <% }%>
+            </h1> <br>
     <h3>Total Results Found: <%= data['results_found'] %></h3><br>
     <% if( data['results_found'] == '0'){ %>
         <div class="alert alert-info" role="alert">
                Sorry!! :(  We were not able to find any restaurant in this category, Try another Category.
         </div>
-    <% }
-    else{ %>
-       <form action="/show/<%= id %>" method="POST">
+    <% }else{ %>
+        <form action="/show/<%= id %>" method="POST">
             <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-4">
             <select class="custom-select custom-select-lg mb-3" name="cat_id">
@@ -95,6 +99,7 @@
               </div>
     <% } %>
 
+    
     
     
 </div>

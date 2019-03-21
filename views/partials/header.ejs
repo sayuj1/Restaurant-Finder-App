@@ -20,6 +20,17 @@
                         <li class="nav-item">
                           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
+                        <% if(page_name){ %>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/show/<%= id %>">Go back <span class="sr-only">(current)</span></a>
+                          </li>
+                        <% } %>  
+                        <% if(city_page){ %>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/show/<%= id %>">Go back <span class="sr-only">(current)</span></a>
+                          </li>
+                        <% } %>  
+                          
                       </ul>
                     </div>
                   </nav>

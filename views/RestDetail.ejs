@@ -1,5 +1,5 @@
 <% include partials/header %>
-    <div class="container">
+  <div class="container">
             <div class="jumbotron jumbotron-fluid index-header-container">
                     <div class="container" id="index-header">
                       <h1 class="display-4">Welcome To <%= data["name"] %></h1>
@@ -80,7 +80,7 @@
                                 <strong>City</strong><br>
                                 <%= data["location"]["city"] %> <hr><br><br> 
                                 <strong>Zipcode</strong><br>
-                                <% if(data["location"]["zipcode"] == ""){ %>
+                                <% if(data["location"]["zipcode"] == "" || data["location"]["zipcode"] == "0"){ %>
                                     Not Available
                                 <% }
                                 else{ %>

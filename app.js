@@ -17,7 +17,7 @@ app.get("/", function(req, res){
         url: 'https://developers.zomato.com/api/v2.1/categories',
         headers: {
             'Accept': 'application/json',
-            'user-key': '1c023e9d1892813bf1ca4de62e57e647',
+            'user-key': '', //your api key
             'Content-Type': 'application/json',
         }
       };
@@ -41,7 +41,7 @@ app.get("/show/:id", function(req, res){
         url: 'https://developers.zomato.com/api/v2.1/search?category='+id,
         headers: {
             'Accept': 'application/json',
-            'user-key': '1c023e9d1892813bf1ca4de62e57e647',
+            'user-key': '', //your api key
             'Content-Type': 'application/json',
         }
       };
@@ -67,7 +67,7 @@ app.get("/show/:id/:r_id", function(req, res){
         url: 'https://developers.zomato.com/api/v2.1/restaurant?res_id='+r_id,
         headers: {
             'Accept': 'application/json',
-            'user-key': '1c023e9d1892813bf1ca4de62e57e647',
+            'user-key': '', //your api key
             'Content-Type': 'application/json',
         }
       };
@@ -97,7 +97,7 @@ app.post("/show/:id", function(req, res){
         url: 'https://developers.zomato.com/api/v2.1/search?category='+id,
         headers: {
             'Accept': 'application/json',
-            'user-key': '1c023e9d1892813bf1ca4de62e57e647',
+            'user-key': '', //your api key
             'Content-Type': 'application/json',
         }
       };
@@ -117,7 +117,7 @@ app.post("/show/:id", function(req, res){
       url: "https://developers.zomato.com/api/v2.1/search?entity_id="+req.body.c_id+"&entity_type=city&category="+req.params.id,
       headers: {
           'Accept': 'application/json',
-          'user-key': '1c023e9d1892813bf1ca4de62e57e647',
+          'user-key': '',  //your api key
           'Content-Type': 'application/json',
       }
     };
@@ -136,7 +136,7 @@ app.post("/show/:id", function(req, res){
       url: "https://developers.zomato.com/api/v2.1/search?entity_id="+req.body.c_id+"&entity_type=city&category="+req.body.cat_id,
       headers: {
           'Accept': 'application/json',
-          'user-key': '1c023e9d1892813bf1ca4de62e57e647',
+          'user-key': '', //your api key
           'Content-Type': 'application/json',
       }
     };
@@ -161,7 +161,7 @@ app.post("/show/:id", function(req, res){
         url: 'https://developers.zomato.com/api/v2.1/search?category='+id,
         headers: {
             'Accept': 'application/json',
-            'user-key': '1c023e9d1892813bf1ca4de62e57e647',
+            'user-key': '',  //your api key
             'Content-Type': 'application/json',
         }
       };

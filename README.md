@@ -1,1 +1,1 @@
-# Hotel-Search-App
+# Restaurant-Search-App
